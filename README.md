@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Dimensionality reduction is a crucial technique in unsupervised learning, helping simplify models, reduce computational cost, and mitigate the curse of dimensionality. In this lab, we will explore key dimensionality reduction techniques such as **Principal Component Analysis (PCA)** and **t-Distributed Stochastic Neighbor Embedding (t-SNE)**. These methods allow us to visualize high-dimensional data in lower dimensions and optimize models for better performance.
+Dimensionality reduction is a key technique in unsupervised learning that helps simplify models, reduce computational cost, and visualize data effectively. In this lab, we will explore Principal Component Analysis (PCA) and t-Distributed Stochastic Neighbor Embedding (t-SNE) techniques to reduce the dimensions of a high-dimensional dataset and gain insights from it.
 
 ## Setup Instructions
 
@@ -10,8 +10,8 @@ Follow the steps below to set up the environment and reproduce the results from 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/codeskills-ai/LAB-Dimensionality-Reduction.git
-    cd LAB-Dimensionality-Reduction
+    git clone https://github.com/codeskills-ai/LAB-Unsupervised-Learning-Dimensionality-Reduction.git
+    cd LAB-Unsupervised-Learning-Dimensionality-Reduction
     ```
 
 2. **Create a virtual environment and install the required packages**:
@@ -24,64 +24,58 @@ Follow the steps below to set up the environment and reproduce the results from 
     jupyter notebook
     ```
 
-## Steps
+## Iteration 1: Introduction to Dimensionality Reduction (Wine Dataset with PCA)
 
-### Step 1: Introduction to Dimensionality Reduction
+Make sure to import the necessary libraries like `numpy`, `pandas`, `matplotlib`, `seaborn`, and `sklearn`.
 
-Begin by understanding the core concepts of dimensionality reduction. The main objective is to reduce the dataset’s complexity while retaining the most relevant information.
+1. **Load the Wine Dataset**:
+   - Load the Wine dataset directly from `sklearn` and convert it into a Pandas DataFrame for better handling.
 
-- **Key Concepts**: Learn about variance, the goal of dimensionality reduction, and common applications.
-- **Dataset Load**: Load a high-dimensional dataset (e.g., MNIST dataset or any custom dataset of choice).
-- **Exploratory Data Analysis (EDA)**: Perform initial EDA to observe high-dimensional data distributions.
+2. **Data Exploration**:
+   - Calculate descriptive statistics for each column.
+   - Observe the distribution of the target variable `quality` and visualize the correlation between features using a heatmap.
 
-### Step 2: Understanding the Curse of Dimensionality
+3. **Discussion**:
+   - Which features seem to be most correlated with the target variable `quality`?
+   - Are there any features that appear irrelevant or redundant?
 
-This step highlights the challenges associated with high-dimensional datasets.
+## Iteration 2: Principal Component Analysis (PCA) on Wine Dataset
 
-- **Curse of Dimensionality**: Learn the impact of increasing dimensions on distance and model performance.
-- **Visualization**: Use basic techniques (e.g., pair plots or heatmaps) to visualize high-dimensional spaces and feature correlations.
+1. **Preprocessing**:
+   - Standardize the features using `StandardScaler` so that all features are on the same scale.
 
-### Step 3: Choosing the Right Dimensionality Reduction Technique
+2. **Applying PCA**:
+   - Apply PCA to reduce the dataset to 2 principal components.
+   - Visualize the cumulative explained variance and plot the first two principal components.
 
-Explore various dimensionality reduction techniques and their specific use cases.
+3. **2D Visualization**:
+   - Create a 2D scatter plot of the first two principal components. Use different colors for each `quality` value to observe patterns.
 
-- **PCA vs. t-SNE**: Introduction to PCA and t-SNE and when to use each.
-- **Techniques Overview**: Summarize the strengths and weaknesses of the following methods:
-  - **PCA (Principal Component Analysis)**
-  - **t-SNE (t-Distributed Stochastic Neighbor Embedding)**
-  - **LDA (Linear Discriminant Analysis)** (optional for labeled data)
+4. **Discussion**:
+   - Can you observe any clear separation between different quality values?
+   - How much variance is explained by the first two principal components?
 
-### Step 4: Principal Component Analysis (PCA)
+## Iteration 3: t-Distributed Stochastic Neighbor Embedding (t-SNE) on Digits Dataset
 
-Implement and analyze the PCA algorithm to reduce the dataset’s dimensions.
+1. **Load the Digits Dataset**:
+   - Load the Digits dataset from `sklearn` and convert it into a Pandas DataFrame.
 
-- **Apply PCA**: Extract principal components from the dataset and reduce it to two or three dimensions.
-- **Explained Variance**: Visualize the explained variance ratio to determine how much information each principal component retains.
-- **2D/3D Visualization**: Use 2D and 3D scatter plots to visualize the data in reduced dimensions.
-- **Model Evaluation**: Evaluate the model’s performance before and after dimensionality reduction using classification or clustering algorithms.
+2. **Preprocessing**:
+   - Standardize the features using `StandardScaler` so that all features are on the same scale.
 
-### Step 5: t-Distributed Stochastic Neighbor Embedding (t-SNE)
+3. **Applying t-SNE**:
+   - Use t-SNE to reduce the dataset to 2 components. Adjust `perplexity` and other parameters as needed.
 
-Implement t-SNE for non-linear dimensionality reduction and visualization.
+4. **2D Visualization**:
+   - Create a scatter plot of the two t-SNE components, using different colors for each `digit` value.
 
-- **Apply t-SNE**: Reduce the dataset to two dimensions using t-SNE, optimizing perplexity and other parameters.
-- **Visualization**: Visualize clusters or classes in the reduced 2D space using scatter plots.
-- **Comparison with PCA**: Compare the visualization and effectiveness of t-SNE versus PCA.
+## Iteration 4: Evaluation and Conclusions
 
-### Step 6: Evaluating Dimensionality Reduction Techniques
+**Evaluation of Techniques**:
+   - Compare the effectiveness of PCA and t-SNE using a simple classifier like KNN and evaluate accuracy before and after applying each technique.
+   - Train a KNN classifier on both PCA-reduced and t-SNE-reduced datasets and compare the performance with the original dataset.
 
-Evaluate the performance of PCA and t-SNE using different clustering or classification models.
+## Bonus:
 
-- **Model Evaluation Metrics**: Use metrics such as **accuracy**, **precision**, **Silhouette Score**, and **Davies-Bouldin Index** to assess the quality of the reduced data.
-- **Trade-Offs**: Discuss the trade-offs between different dimensionality reduction techniques in terms of computation time, interpretability, and model performance.
+- **Try with a Different Dataset**: Implement the above steps using another dataset available in `sklearn`, such as the Iris dataset for PCA and Fashion MNIST for t-SNE, and compare the results obtained.
 
-### Step 7: Conclusion and Best Practices
-
-Summarize the key takeaways from this lab, focusing on when and how to apply dimensionality reduction techniques effectively.
-
-- **Conclusion**: Discuss the pros and cons of PCA, t-SNE, and other techniques.
-- **Best Practices**: Provide guidelines on choosing the appropriate dimensionality reduction method based on data characteristics and desired outcomes.
-
-### Optional Challenge: Implementing Other Dimensionality Reduction Techniques
-
-For further exploration, implement other dimensionality reduction techniques, such as **Isomap** or **Autoencoders**, and compare their performance with PCA and t-SNE.
