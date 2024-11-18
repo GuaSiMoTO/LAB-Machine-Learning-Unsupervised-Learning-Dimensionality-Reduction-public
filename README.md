@@ -73,7 +73,6 @@ Make sure to import the necessary libraries like `numpy`, `pandas`, `matplotlib`
 
 **Evaluation of Techniques**:
    - Compare the effectiveness of PCA and t-SNE using a simple classifier like KNN and evaluate accuracy before and after applying each technique.
-   - Train a KNN classifier on both PCA-reduced and t-SNE-reduced datasets and compare the performance with the original dataset.
 
 ## Bonus:
 
